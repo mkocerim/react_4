@@ -16,8 +16,10 @@ const Login = () => {
   //   return
   // }
 
-  const onLoginBtnClick = () => {
+  const formOnSubmit = (event) => {
     //alert(`${email} ve ${password}`)
+    
+    event.preventDefault()
 
     const postData = {
       email,
@@ -41,7 +43,7 @@ const Login = () => {
       <div className="col-lg-4 col-md-6 col-sm-12">
         <h3>Lütfen buradan login olun</h3>
 
-        <form noValidate>
+        <form noValidate onSubmit={formOnSubmit}>
           <div className="row g-3">
             <div className="col-sm-12">
               <label
@@ -79,8 +81,7 @@ const Login = () => {
               <div className="d-grid gap-2">
                 <button
                   className="btn btn-primary"
-                  type="button"
-                  onClick={onLoginBtnClick}
+                  type="submit"
                 >
                   Login
                 </button>

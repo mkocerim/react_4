@@ -1,39 +1,43 @@
 import { useSelector } from "react-redux";
 
 function Footer() {
+  const categories = useSelector((state) => state.category);
 
-const categories=useSelector(state=>state.category)
+  console.log(">>FOOTER CATEGORIES", categories);
 
-console.log('>>FOOTER CATEGORIES',categories)
+  let categoriesJsx = [];
 
-let  categoriesJsx=[]
+  console.log(">> CAT JSX ", categoriesJsx);
 
-console.log('>> CAT JSX ', categoriesJsx)
+  if (categories) {
+    categories.map((item, index) => {
+      if (index >= 5) {
+        return
+      };
 
-if(categories){
-
-
-
-
-
-}else{
-
-categoriesJsx = (
-<li className="mb-1" key='1'>
-  
-  <strong >
-    Loading...
-  </strong>
-  </li>
-  )
-}
-
+      categoriesJsx.push(
+        <li className="mb-1" key = {index}>
+          <a
+            className="link-secondary text-decoration-none"
+            href={"#/category/" + item.slug} // href= {#/category/`${item.slug}`}
+          >
+            {item.name}
+          </a>
+        </li>
+      );
+    });
+  } else {
+    categoriesJsx = (
+      <li className="mb-1" key="1">
+        <strong>Loading...</strong>
+      </li>
+    );
+  }
 
   return (
     <footer className="pt-4 my-md-5 pt-md-5 border-top">
       <div className="row">
         <div className="col-12 col-md">
-          
           <small className="d-block mb-3 text-muted">&copy; 2017–2021</small>
         </div>
         <div className="col-6 col-md">
@@ -71,38 +75,13 @@ categoriesJsx = (
             </li>
           </ul>
         </div>
+
         <div className="col-6 col-md">
-
-
           <h5>Categories</h5>
-          
-          
-          <ul className="list-unstyled text-small">
 
-           
-
-            <li className="mb-1">
-              <a className="link-secondary text-decoration-none" href="#">
-              {categories}
-              </a>
-            </li>
-            <li className="mb-1">
-              <a className="link-secondary text-decoration-none" href="#">
-                Resource name
-              </a>
-            </li>
-            <li className="mb-1">
-              <a className="link-secondary text-decoration-none" href="#">
-                Another resource
-              </a>
-            </li>
-            <li className="mb-1">
-              <a className="link-secondary text-decoration-none" href="#">
-                Final resource
-              </a>
-            </li>
-          </ul>
+          <ul className="list-unstyled text-small">{categoriesJsx}</ul>
         </div>
+
         <div className="col-6 col-md">
           <h5>About</h5>
           <ul className="list-unstyled text-small">
