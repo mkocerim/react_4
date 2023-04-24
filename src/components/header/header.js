@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { removeToken } from "../../redux/authSlice";
-import {removeAppData} from "../../redux/appDataSlice"
+import { removeAppData } from "../../redux/appDataSlice";
 
 function Header() {
   const authState = useSelector((state) => state.auth);
@@ -34,12 +34,12 @@ function Header() {
           </a>
         */}
 
-          <a className="me-3 py-2 text-dark text-decoration-none" href="#/home">
+          <a className="me-3 py-2 text-dark text-decoration-none" href="/home">
             Home
           </a>
           <a
             className="me-3 py-2 text-dark text-decoration-none"
-            href="#/categories"
+            href="/categories"
           >
             Categories
           </a>
