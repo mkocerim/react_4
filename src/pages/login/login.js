@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-    
+
   const api = useApi();
 
   const dispatch = useDispatch();
@@ -18,8 +18,8 @@ const Login = () => {
 
   const formOnSubmit = (event) => {
     //alert(`${email} ve ${password}`)
-    
-    event.preventDefault()
+
+    event.preventDefault();
 
     const postData = {
       email,
@@ -31,7 +31,7 @@ const Login = () => {
       .post("auth/login", postData)
       .then((response) => {
         dispatch(setToken(response.data.data.token));
-        document.location.hash= '#/'
+        document.location.hash = "#/";
       })
       .catch((err) => {
         alert("Bir hata olustu");
@@ -79,10 +79,7 @@ const Login = () => {
             </div>
             <div className="col-12">
               <div className="d-grid gap-2">
-                <button
-                  className="btn btn-primary"
-                  type="submit"
-                >
+                <button className="btn btn-primary" type="submit">
                   Login
                 </button>
               </div>
