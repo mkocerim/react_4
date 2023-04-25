@@ -12,11 +12,11 @@ function Footer() {
   if (categories) {
     categories.map((item, index) => {
       if (index >= 5) {
-        return
-      };
+        return;
+      }
 
       categoriesJsx.push(
-        <li className="mb-1" key = {index}>
+        <li className="mb-1" key={index}>
           <a
             className="link-secondary text-decoration-none"
             href={"#/category/" + item.slug} // href= {#/category/`${item.slug}`}
